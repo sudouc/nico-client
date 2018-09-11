@@ -1,0 +1,46 @@
+{
+  "name": "nico-client",
+  "description": "Nico Project Client - Enter the darker dimension",
+  "version": "0.0.0",
+  "homepage": "",
+  "main": "src",
+  "keywords": [],
+  "author": {
+    "name": "Alex",
+    "email": "alex@sudo.org.au"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/"
+  },
+  "engines": {
+    "node": "^10.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run mocha",
+    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "babel-node": "babel-node --presets=latest",
+    "start": "nodemon --exec npm run babel-node -- ./src/index.js",
+    "build": "babel src -d dist",
+    "mocha": "mocha test/ --recursive --exit"
+  },
+  "dependencies": {
+    "@feathersjs/feathers": "^3.2.1",
+    "@feathersjs/socketio-client": "^1.1.2",
+    "babel-eslint": "^9.0.0",
+    "socket.io-client": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-latest": "^6.24.1",
+    "eslint": "^5.5.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
