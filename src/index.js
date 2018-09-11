@@ -16,6 +16,14 @@ const app = feathers();
 app.configure(socketio(socket));
 
 // Receive real-time events through Socket.io
-app.service('players')
-	.on('created', (message) => console.log(message))
-	.on('updated', (message) => console.log(message));
+app.service('players').on('updated', (message) => console.log(message));
+
+const playerID = 'cVjjLO0aE5THcnBU';
+
+for(let i = 0; i < 100; i++) {
+	app.service('players').update(playerID, {
+		x: 123,
+		y: i
+	});
+
+}
