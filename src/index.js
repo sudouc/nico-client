@@ -4,7 +4,6 @@
  *
  * For information about this game, visit
  */
-
 const feathers = require('@feathersjs/feathers');
 const socketio = require('@feathersjs/socketio-client');
 const io = require('socket.io-client');
@@ -12,18 +11,34 @@ const io = require('socket.io-client');
 const socket = io('http://ari.local:3030');
 const app = feathers();
 
+import World from './World'
+import Player from './Player'
+
 // Set up Socket.io client with the socket
 app.configure(socketio(socket));
 
-// Receive real-time events through Socket.io
-app.service('players').on('updated', (message) => console.log(message));
+//
+const world = new World(app.service('players'))
+world.getPlayers().then((players) => {
 
-const playerID = 'cVjjLO0aE5THcnBU';
+});
 
-for(let i = 0; i < 100; i++) {
-	app.service('players').update(playerID, {
-		x: 123,
-		y: i
-	});
+const player = new Player(world);
+const playerID = 'HureGQXyl5eHCyFH';
+player.setPlayerID(playerID)
 
+player.getOrCreatePlayer()
+
+
+world.context.on('updated', (response) => {
+	console.log(response)
+})
+
+
+
+
+
+
+for(let i = 0; i < 20; i++) {
+	setTimeout(() => { player.moveUp() }, 20 * i)
 }
