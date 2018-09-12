@@ -1,7 +1,11 @@
 class World {
+
 	constructor(appPlayerContext) {
 		this.context = appPlayerContext
-		this.context.on('updated', (message) => console.log(message))
+	}
+
+	onUpdate(fn) {
+		this.context.on('updated', fn)
 	}
 
 	getPlayers() {

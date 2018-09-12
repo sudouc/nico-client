@@ -17,7 +17,7 @@ Getting up and running is as easy as 1, 2, 3.
     cd path/to/nico; npm install
     ```
 
-3. Start your app
+3. Start your client
 
     ```
     npm start

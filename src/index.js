@@ -4,41 +4,28 @@
  *
  * For information about this game, visit
  */
-const feathers = require('@feathersjs/feathers');
-const socketio = require('@feathersjs/socketio-client');
-const io = require('socket.io-client');
 
-const socket = io('http://ari.local:3030');
-const app = feathers();
+import client from './client';
+import World from './Objects/World'
+import Player from './Objects/Player'
 
-import World from './World'
-import Player from './Player'
 
-// Set up Socket.io client with the socket
-app.configure(socketio(socket));
-
-//
-const world = new World(app.service('players'))
+const world = new World(client.service('players'));
 world.getPlayers().then((players) => {
-
+	console.log('––––––––––––––––––');
+	console.log('Current Players:');
+	console.log(players);
+	console.log('––––––––––––––––––')
+});
+world.onUpdate((messages) => {
+	console.log(messages)
 });
 
 const player = new Player(world);
-const playerID = 'HureGQXyl5eHCyFH';
-player.setPlayerID(playerID)
+const playerID = '123';
+player.setPlayerID(playerID);
 
-player.getOrCreatePlayer()
-
-
-world.context.on('updated', (response) => {
-	console.log(response)
-})
-
-
-
-
-
-
-for(let i = 0; i < 20; i++) {
-	setTimeout(() => { player.moveUp() }, 20 * i)
-}
+player.getOrCreatePlayer();
+player.moveUp().then(() => {
+	player.moveUp()
+});

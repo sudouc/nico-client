@@ -25,7 +25,9 @@
     "babel-node": "babel-node --presets=latest",
     "start": "nodemon --exec npm run babel-node -- ./src/index.js",
     "build": "babel src -d dist",
-    "mocha": "mocha test/ --recursive --exit"
+    "mocha": "mocha test/ --recursive --exit",
+    "publish-please": "publish-please",
+    "prepublishOnly": "publish-please guard"
   },
   "dependencies": {
     "@feathersjs/feathers": "^3.2.1",
@@ -40,6 +42,7 @@
     "eslint": "^5.5.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.4",
+    "publish-please": "^3.2.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2"
   }
