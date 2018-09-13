@@ -6,8 +6,9 @@
  */
 
 import { client, World, Player } from './index';
-
 import repl from "repl";
+
+client.setup('http://nico.sudo.org.au:3030')
 
 const world = new World(client.service('players'));
 world.getPlayers((players) => {
