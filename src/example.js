@@ -30,7 +30,14 @@ player.addToWorld(world)
 const playerID = '124';
 player.setPlayerID(playerID);
 
-player.existsInWorld().then(response => console.log(response))
+player.existsInWorld()
+	.then(exists => {
+		exists ? '' : player.createInWorld()
+	})
+
+player.moveUp()
 
 const msg = 'message';
 repl.start('> ').context.m = msg;
+
+process.player = player
