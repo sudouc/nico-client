@@ -52,6 +52,21 @@ class Player {
 		return this.sync()
 	}
 
+	moveDown() {
+		this.location.y--;
+		return this.sync();
+	}
+
+	moveRight() {
+		this.location.x++;
+		return this.sync();
+	}
+
+	moveLeft() {
+		this.location.x--;
+		return this.sync();
+	}
+
 	sync() {
 		return this.world.update(this.playerID, {
 			location: this.location
