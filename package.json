@@ -23,7 +23,7 @@
     "test": "npm run eslint && npm run mocha",
     "eslint": "eslint src/. test/. --config .eslintrc.json",
     "babel-node": "babel-node --presets=latest",
-    "start": "nodemon --exec npm run babel-node -- ./src/index.js",
+    "start": "nodemon --exec npm run babel-node -- ./src/example.js",
     "build": "babel src -d dist",
     "mocha": "mocha test/ --recursive --exit",
     "publish-please": "publish-please",

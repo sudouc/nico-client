@@ -8,8 +8,8 @@ class World {
 		this.context.on('updated', fn)
 	}
 
-	getPlayers() {
-		return this.context.find();
+	getPlayers(fn) {
+		return this.context.find().then(fn);
 	}
 
 }
