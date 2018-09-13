@@ -1,9 +1,10 @@
 {
   "name": "nico-client",
   "description": "Nico Project Client - Enter the darker dimension",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "",
-  "main": "src",
+  "main": "dist",
+  "module": "src",
   "keywords": [],
   "author": {
     "name": "Alex",
@@ -16,7 +17,8 @@
     "test": "test/"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "engines": {
     "node": "^10.0.0",
