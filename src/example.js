@@ -12,14 +12,14 @@ client.setup('https://nico.sudo.org.au')
 
 const world = new World(client.service('players'));
 world.getPlayers((players) => {
-	// console.log('––––––––––––––––––');
-	// console.log('Current Players:');
-	// console.log(players);
-	// console.log('––––––––––––––––––')
+	console.log('––––––––––––––––––');
+	console.log('Current Players:');
+	console.log(players);
+	console.log('––––––––––––––––––')
 });
 
 world.onUpdate((messages) => {
-	//console.log(messages)
+	console.log(messages)
 });
 
 // Create a new player object
@@ -28,17 +28,17 @@ const player = new Player();
 player.addToWorld(world)
 
 // Set our player ID
-const playerID = '124';
+const playerID = '1337';
 player.setPlayerID(playerID);
 
-player.existsInWorld()
-	.then(exists => {
-		exists ? '' : player.createInWorld()
-	})
+//
+player.existsInWorld().then(exists => {
+	exists ? '' : player.createInWorld()
+})
 
 player.moveUp()
 
 const msg = 'message';
-repl.start('> ').context.m = msg;
+repl.start('> ').context.world = world;
 
 process.player = player

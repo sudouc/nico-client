@@ -8,6 +8,9 @@ class Player {
 			x: 100,
 			y: 100
 		}
+		this.inventory = [
+			'guitar'
+		]
 	}
 
 	addToWorld(world) {
@@ -35,10 +38,12 @@ class Player {
 	createInWorld() {
 		return this.world.create({
 			_id: this.playerID,
-			location: this.location
+			location: this.location,
+			inventory: this.inventory
 		}).then((response) => {
 			this.playerID = response._id;
 			this.location = response.location;
+			this.inventory = response.inventory;
 			this.getOrCreatePlayer()
 		})
 	}
@@ -69,9 +74,11 @@ class Player {
 
 	sync() {
 		return this.world.update(this.playerID, {
-			location: this.location
+			location: this.location,
+			inventory : this.inventory
 		}).then((response) => {
 			this.location = response.location
+			this.inventory = response.inventory
 		})
 	}
 
